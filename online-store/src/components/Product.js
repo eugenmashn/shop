@@ -3,17 +3,24 @@ import styled, {css} from 'styled-components'
 import {productPropTypes} from "../common/propTypes";
 import {arrayOf} from 'prop-types'
 import {routes} from "../routes";
+import {Link, Route} from "react-router-dom";
+import {AddMOdule} from "./AddMOdule";
+import ModalRoute from "react-router-modal/lib/modal_route";
 const commonInputStyles=css`display: block;`;
 const TextArea=styled.textarea`${commonInputStyles}`;
 const InputField=styled.input`${commonInputStyles}`;
- const ProductComponent=({title,description,deleteFunc,onClick,onChange,onSubmit})=>(
+ const ProductComponent=({title,description,deleteFunc,onClick,onChange,onSubmit,match,id})=>(
+     <div>
     <form onSubmit={onSubmit}>
         <InputField name="title"value={title} onChange={onChange('title')}/>
         <TextArea name="description"value={description}onChange={onChange('description')}/>
         <button type='submit'>Save</button>
         <button onClick={onClick}>Delete</button>
-        <button>Add</button>
+
+
     </form>
+    <AddMOdule/>
+     </div>
 );
  ProductComponent.propTypes=productPropTypes;
 export class ProductContainer extends React.Component {

@@ -11,6 +11,7 @@ export const AdminPage=({productList,match,updateProduct,deleteFunc})=>(
                exact
                render={()=>productList.map(({title,id})=><ProductLink key={id} id={id} title={title} />)} />
         <Route
+            exact
             path={routes.adminProduct}
             render={(renderProps)=><ProductContainer deleteFunc={deleteFunc}updateProduct={updateProduct} productList={productList}{...renderProps}/>}
         />
