@@ -17,14 +17,14 @@ const InputField=styled.input`${commonInputStyles}`;
 
 
     </form>
-    <AddMOdule/>
+    <AddMOdule addNewFon={this.props.addNewFon}/>
      </div>
 );
  ProductComponent.propTypes=productPropTypes;
 export class ProductContainer extends React.Component {
     constructor(props){
         super(props);
-        const {match:{params},productList}=props;
+        const {match:{params},productList,addNewFon}=props;
         const product=productList.find(({id})=>Number(params.id)===id);
         this.state={
             ...product,
@@ -50,7 +50,9 @@ export class ProductContainer extends React.Component {
 
 
 
-   return<ProductComponent{...this.state}
+   return<ProductComponent
+       addNewFon={this.addNewFon}
+       {...this.state}
          onSubmit={this.onSubmit}
          onClick={this.onClick}
         onChange={this.onChange}

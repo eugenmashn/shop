@@ -5,7 +5,7 @@ import {productPropTypes} from "../../common/propTypes";
 import {Route} from "react-router-dom";
 import {routes} from "../../routes";
 import { ProductContainer} from "../../components/Product";
-export const AdminPage=({productList,match,updateProduct,deleteFunc})=>(
+export const AdminPage=({productList,match,updateProduct,deleteFunc,addNewFon})=>(
     <div>
         <Route path={match.path}
                exact
@@ -13,7 +13,7 @@ export const AdminPage=({productList,match,updateProduct,deleteFunc})=>(
         <Route
             exact
             path={routes.adminProduct}
-            render={(renderProps)=><ProductContainer deleteFunc={deleteFunc}updateProduct={updateProduct} productList={productList}{...renderProps}/>}
+            render={(renderProps)=><ProductContainer addNewFon={addNewFon} deleteFunc={deleteFunc}updateProduct={updateProduct} productList={productList}{...renderProps}/>}
         />
     </div>
 

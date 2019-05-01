@@ -53,6 +53,20 @@ class App extends Component {
           }
       )
   };
+  addNewFon=(title,description)=>{
+      const id= this.state.products.length+1;
+      const newElem={
+          id: id,
+          title: title,
+          description:description,
+          image: 'https://hotline.ua/img/tx/862/862504_s265.jpg',
+          price: 8457,};
+      this.setState(
+          {
+              products:this.state.products.push(newElem)
+          }
+      )
+  };
 
     render(){
       if(this.state.loading){
@@ -67,7 +81,7 @@ class App extends Component {
 
             path={routes.admin} render={
                 (renderProps)=>
-                    <AdminPage deleteFunc={this.deleteFunc} updateProduct={this.updateProduct} productList={this.state.products} {...renderProps} />}
+                    <AdminPage addNewFon={this.addNewFon}deleteFunc={this.deleteFunc} updateProduct={this.updateProduct} productList={this.state.products} {...renderProps} />}
         />
 
     </div>

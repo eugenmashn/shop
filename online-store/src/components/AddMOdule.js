@@ -21,8 +21,8 @@ const commonInputStyles=css`display: block;`;
 const TextArea=styled.textarea`${commonInputStyles}`;
 const InputField=styled.input`${commonInputStyles}`;
 export class AddMOdule extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             modalIsOpen: false
@@ -56,8 +56,8 @@ export class AddMOdule extends React.Component {
 
                     <button onClick={this.closeModal}>Add</button>
 
-                    <form>
-                        <InputField name="title"/>
+                    <form onSubmit={onsubmit}>
+                        <InputField name="title"  />
                         <TextArea name="description"/>
                     </form>
                 </Modal>
