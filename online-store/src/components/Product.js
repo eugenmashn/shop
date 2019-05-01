@@ -3,9 +3,7 @@ import styled, {css} from 'styled-components'
 import {productPropTypes} from "../common/propTypes";
 import {arrayOf} from 'prop-types'
 import {routes} from "../routes";
-import {Link, Route} from "react-router-dom";
 import {AddMOdule} from "./AddMOdule";
-import ModalRoute from "react-router-modal/lib/modal_route";
 const commonInputStyles=css`display: block;`;
 const TextArea=styled.textarea`${commonInputStyles}`;
 const InputField=styled.input`${commonInputStyles}`;

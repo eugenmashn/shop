@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import styled, {css} from "styled-components";
+
 
 const customStyles = {
     content : {
@@ -15,7 +17,9 @@ const customStyles = {
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
-
+const commonInputStyles=css`display: block;`;
+const TextArea=styled.textarea`${commonInputStyles}`;
+const InputField=styled.input`${commonInputStyles}`;
 export class AddMOdule extends React.Component {
     constructor() {
         super();
@@ -25,7 +29,6 @@ export class AddMOdule extends React.Component {
         };
 
         this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
 
@@ -33,10 +36,7 @@ export class AddMOdule extends React.Component {
         this.setState({modalIsOpen: true});
     }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
-    }
+
 
     closeModal() {
         this.setState({modalIsOpen: false});
@@ -48,21 +48,17 @@ export class AddMOdule extends React.Component {
                 <button onClick={this.openModal}>Add new</button>
                 <Modal
                     isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     style={customStyles}
                     contentLabel="Example Modal"
                 >
 
-                    <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                    <button onClick={this.closeModal}>close</button>
-                    <div>I am a modal</div>
+
+                    <button onClick={this.closeModal}>Add</button>
+
                     <form>
-                        <input />
-                        <button>tab navigation</button>
-                        <button>stays</button>
-                        <button>inside</button>
-                        <button>the modal</button>
+                        <InputField name="title"/>
+                        <TextArea name="description"/>
                     </form>
                 </Modal>
             </div>
