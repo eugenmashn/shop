@@ -5,14 +5,14 @@ import {productPropTypes} from "../../common/propTypes";
 import {Route} from "react-router-dom";
 import {routes} from "../../routes";
 import { ProductContainer} from "../../components/Product";
-export const AdminPage=({productList,match,updateProduct})=>(
+export const AdminPage=({productList,match,updateProduct,deleteFunc})=>(
     <div>
         <Route path={match.path}
                exact
                render={()=>productList.map(({title,id})=><ProductLink key={id} id={id} title={title} />)} />
         <Route
             path={routes.adminProduct}
-            render={(renderProps)=><ProductContainer updateProduct={updateProduct} productList={productList}{...renderProps}/>}
+            render={(renderProps)=><ProductContainer deleteFunc={deleteFunc}updateProduct={updateProduct} productList={productList}{...renderProps}/>}
         />
     </div>
 

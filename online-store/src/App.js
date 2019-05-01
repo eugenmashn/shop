@@ -10,14 +10,20 @@ import {AdminPage} from "./scenes/admin";
 import {products} from "./data/products";
 const getProducts=async ()=>new Promise(
     (resolve )=>{
-        setInterval(()=>resolve(products),2000);
+        setInterval(()=>resolve(products),1000);
     }
 );
 class App extends Component {
-  state={
-      products:[],
-      loading:true,
-  };
+    constructor(props){
+        super(props);
+       this.state={
+        products:[],
+        loading:true,
+
+    };
+    this.deleteFunc=this.deleteFunc.bind(this);
+    }
+
   async componentDidMount() {
       const prods=await getProducts();
       this.setState({
@@ -35,6 +41,18 @@ class App extends Component {
       }),
   })
   };
+  deleteFunc=(ThisProd)=>{
+
+      this.setState(
+          {
+              products:this.state.products.filter((ProductOld)=>{
+                  if(ThisProd.id!==ProductOld.id){
+                      return ProductOld
+                  }
+              })
+          }
+      )
+  };
 
     render(){
       if(this.state.loading){
@@ -49,7 +67,7 @@ class App extends Component {
 
             path={routes.admin} render={
                 (renderProps)=>
-                    <AdminPage updateProduct={this.updateProduct} productList={this.state.products} {...renderProps} />}
+                    <AdminPage deleteFunc={this.deleteFunc} updateProduct={this.updateProduct} productList={this.state.products} {...renderProps} />}
         />
 
     </div>
