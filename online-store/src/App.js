@@ -27,7 +27,7 @@ class App extends Component {
           <Link to={routes.admin}>Admin</Link>
         </p>
         <Route
-            exact
+
             path={routes.admin} render={
                 (renderProps)=>
                     <AdminPage productList={this.state.products} {...renderProps} />}

@@ -1,6 +1,6 @@
 export const routes={
-  admin:'/admin' ,
-  adminProduct:'/admin/products/:id',
-  home:'/',
+  admin:`/admin` ,
+  adminProduct:`/admin/product/:id`,
+  home:`/`,
 
 };
